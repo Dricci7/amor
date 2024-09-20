@@ -1,42 +1,42 @@
-function moveButton() {
-    const noButton = document.getElementById('no');
-    const container = document.querySelector('.container');
-    
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
-    
-    const randomX = Math.random() * (containerWidth - noButton.clientWidth);
-    const randomY = Math.random() * (containerHeight - noButton.clientHeight);
+const naoButton = document.getElementById('nao');
+const simButton = document.getElementById('sim');
+const body = document.body;
 
-    noButton.style.position = 'absolute';
-    noButton.style.left = randomX + 'px';
-    noButton.style.top = randomY + 'px';
-}
+// Função para movimentar o botão "Não" quando o mouse se aproxima
+document.addEventListener('mousemove', (event) => {
+    const xDist = Math.abs(event.clientX - naoButton.offsetLeft);
+    const yDist = Math.abs(event.clientY - naoButton.offsetTop);
+    const proximity = 100; // Definir proximidade para movimentar o botão
 
-function openCongratsPage() {
-    const newWindow = window.open('', '_blank');
-    newWindow.document.write(`
-        <html>
-            <head>
-                <title>Parabéns!</title>
-                <style>
-                    body {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100vh;
-                        background: linear-gradient(to right, #ff7e5f, #feb47b);
-                        color: white;
-                        font-family: Arial, sans-serif;
-                        font-size: 24px;
-                        text-align: center;
-                    }
-                </style>
-            </head>
-            <body>
-                <h1>Parabéns! Você acabou de fazer sua mulher mais feliz!</h1>
-                <p>O PIX dela é: <strong>140.917.679-74</strong></p>
-            </body>
-        </html>
-    `);
+    if (xDist < proximity && yDist < proximity) {
+        const newLeft = Math.random() * (window.innerWidth - naoButton.offsetWidth);
+        const newTop = Math.random() * (window.innerHeight - naoButton.offsetHeight);
+        naoButton.style.left = `${newLeft}px`;
+        naoButton.style.top = `${newTop}px`;
+    }
+});
+
+// Ao clicar no botão "Sim", redirecionar para a página de agradecimento
+simButton.addEventListener('click', () => {
+    document.querySelector('.container').style.display = 'none'; // Esconde a página inicial
+    showThankYouPage(); // Mostra a página de agradecimento
+});
+
+// Função para exibir a página de agradecimento
+function showThankYouPage() {
+    const thankYouPage = document.createElement('div');
+    thankYouPage.classList.add('thankyou-page');
+    thankYouPage.innerHTML = `
+        <div>
+            <div class="message">
+                Obrigadoo meu amor, meu pix é:<br>
+                140.917.679-74
+            </div>
+            <div class="emojis">
+                😄😄😄😍😍😍🥰🥰🥰😎😎😎😜😜😜
+            </div>
+        </div>
+    `;
+    body.appendChild(thankYouPage);
+    thankYouPage.style.display = 'flex';
 }
