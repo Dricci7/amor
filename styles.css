@@ -1,53 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Fundo preto */
-    background-image: url('pineapple.png'); /* Imagem de abacaxi */
-    background-size: 100px 100px; /* Tamanho do abacaxi */
-    background-repeat: repeat; /* Repetição dos abacaxis */
-    text-align: center;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: black;
+    color: yellow;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 .container {
-    background-color: #FFD700; /* Fundo amarelo */
-    padding: 40px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #333;
-}
-
-.buttons {
-    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
 }
 
 button {
-    padding: 10px 20px;
     margin: 10px;
+    padding: 10px 20px;
     font-size: 16px;
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-#sim {
-    background-color: #28a745;
-    color: white;
-}
-
-#nao {
-    background-color: #dc3545;
-    color: white;
-    position: relative;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    opacity: 0.8;
+    background-color: orange;
 }
+
+#no {
+    position: relative;
+}
+
